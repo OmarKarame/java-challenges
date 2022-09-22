@@ -72,7 +72,7 @@ class ChallengeTest {
 
     @Test
     void compareTwoNumbers_ValidInputsNotEqual_ReturnFalse() {
-        boolean result = challenge.compareTwoNumbers(12.3333, 12.3343);
+        boolean result = challenge.compareTwoNumbers(12.3333, 12.334);
         assertFalse(result);
     }
 

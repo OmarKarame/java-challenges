@@ -21,7 +21,12 @@ public class Challenge {
      * @return a new array containing the first and last items in the given array e.g. ["Ollie", "Bex"]
      */
     public String[] getFirstAndLast(String[] namesArr) {
-        return new String[0];
+        if (namesArr.length == 0){
+            String[] emptyArr = {""};
+            return emptyArr;
+        }
+        String[] newArr = {namesArr[0], namesArr[namesArr.length]};
+        return newArr;
     }
 
     /***
@@ -31,7 +36,11 @@ public class Challenge {
      * @return an amount e.g. 104
      */
     public int totalAges(int[] agesArr) {
-        return -1;
+        int total = 0;
+        for (int age: agesArr) {
+            total += age;
+        }
+        return total;
     }
 
     /***
@@ -41,7 +50,13 @@ public class Challenge {
      * @return Amount of odd numbers e.g. 3
      */
     public int getAmountOfOddNumbers(int[] numbersArr) {
-        return -1;
+        int count = 0;
+        for (int number: numbersArr) {
+            if (number % 2 != 0){
+                count++;
+            }
+        }
+        return count;
     }
 
     // -------------- INTERMEDIATE --------------
@@ -57,8 +72,20 @@ public class Challenge {
      * @return a new array of all numbers between and including the min and max number. e.g. [3, 4, 5, 6]
      */
     public int[] getRange(int min, int max) {
-        return new int[] {};
+        int updateNum = min;
+        int arrLength = max+1 - min;
+        if (max > min){
+            int[] numArr = new int[arrLength];
+            numArr[0] = min;
+            for (int i = 1; i < arrLength; i++) {
+                    updateNum++;
+                    numArr[i] = updateNum;
+                }
+            return numArr;
+        }
+        return new int[]{};
     }
+
 
     /**
      * Swap the first and last names in a string
@@ -66,6 +93,23 @@ public class Challenge {
      * @return a string with the last name, followed by the first name e.g. "Evans Andy"
      */
     public String swapNames(String fullName) {
+        int index = 0;
+        int count = 0;
+        String[] fullNameArr = fullName.split("");
+//        for (int i = 0; i < fullNameArr.length; i++) {
+//
+//        }
+//        String[] firstName = new String[count];
+//        for (String letter1: firstName) {
+//            letter1 = fullNameArr[index];
+//            index++;
+//        }
+//        String[] lastName = new String[fullNameArr.length - count - 1];
+//        for (String letter2: lastName) {
+//            letter2 = fullNameArr[index + 1];
+//            index++;
+//        }
+//
         return "";
     }
 
@@ -80,7 +124,13 @@ public class Challenge {
      * @return true or false depending on whether the newScore is the highest value in the array
      */
     public boolean isHighestScore(int[] scoresArr, int newScore) {
-        return false;
+        boolean isHighestNum = true;
+        for (int score: scoresArr) {
+            if (newScore < score){
+                isHighestNum = !isHighestNum;
+            }
+        }
+        return isHighestNum;
     }
 
     // -------------- ADVANCED --------------
@@ -105,5 +155,4 @@ public class Challenge {
     public int[] sort(int[] numbersArr) {
         return new int[] {};
     }
-
 }

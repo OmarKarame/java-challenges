@@ -20,7 +20,7 @@ public class Challenge {
      * @return returns a string which is the concatenation of the 2 parameters
      */
     public String getFullName(String firstName, String lastName) {
-        return "";
+        return firstName + " " + lastName;
     }
 
     /***
@@ -31,9 +31,11 @@ public class Challenge {
      * @return returns a boolean based on whether the number is between 0 and the range limit
      */
     public boolean isWithinRange(int number, int rangeLimit) {
+        if (number >= 0 && number <= rangeLimit) {
+            return true;
+        }
         return false;
     }
-
 
     /***
      * Write a method that takes two numbers and an operator. Based on the operator preform the
@@ -50,7 +52,18 @@ public class Challenge {
      * @return returns the result of the equation
      */
     public int stringCalculator(int numberOne, int numberTwo, String operator) {
-        return -1;
+        switch (operator){
+            case "*":
+                return numberOne * numberTwo;
+            case "+":
+                return numberOne + numberTwo;
+            case "-":
+                return numberOne - numberTwo;
+            case "/":
+                return numberOne / numberTwo;
+            default:
+                return 0;
+        }
     }
 
 
@@ -70,6 +83,11 @@ public class Challenge {
      * @return If we need to wake up or not based on the conditions above.
      */
     public boolean shouldWakeUp(boolean barking, int hourOfDay) {
+        if (hourOfDay > 24 || hourOfDay < 0) {
+            return false;
+        } else if (hourOfDay < 8 || hourOfDay > 22){
+            return true;
+        }
         return false;
     }
 
@@ -83,7 +101,19 @@ public class Challenge {
      * character in the string: a"
      */
     public String getMiddleCharacter(String word) {
-        return "";
+        if (word.split(" ").length != 1 || word.equals("")) return "Invalid Input";
+
+        int position;
+        int length;
+
+        if (word.length() % 2 == 0) {
+            position = word.length() / 2 - 1;
+            length = 2;
+        } else {
+            position = word.length() / 2;
+            length = 1;
+        }
+        return word.substring(position, position + length);
     }
 
 
@@ -99,7 +129,12 @@ public class Challenge {
      * @return returns a string in the format above if the input is valid, or "Invalid value"
      */
     public String printMegaBytesAndKiloBytes(int kiloBytes) {
-        return "";
+        int totalMB = kiloBytes/1024;
+        int remainderKB = kiloBytes%1024;
+        if (kiloBytes > 0){
+            return kiloBytes + " KB = " + totalMB + " MB and " + remainderKB + " KB";
+        }
+        return "Invalid Value";
     }
 
     // -------------- ADVANCED --------------
